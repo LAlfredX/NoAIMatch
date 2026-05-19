@@ -1,8 +1,14 @@
 
 &lt;div align="center"&gt;
 
-# 🔍 Pure Hard-Coded Image Similarity Comparison
-# 🔍 纯硬编码图像相似度比对
+# 🔍 NoAIMatch
+# 🔍 无AI图像匹配
+
+&lt;p align="center"&gt;
+  &lt;em&gt;100% pure hard-coded image similarity comparison — No AI, No ML, Just Math!&lt;/em&gt;
+  &lt;br&gt;
+  &lt;em&gt;100%纯硬编码图像相似度比对 — 无AI、无机器学习、只有数学！&lt;/em&gt;
+&lt;/p&gt;
 
 &lt;/div&gt;
 
@@ -20,9 +26,11 @@
 &lt;a name="english"&gt;&lt;/a&gt;
 ## 🇬🇧 English
 
-### 🎯 What is this?
+### 🎯 What is NoAIMatch?
 
-A **100% pure hard-coded** image similarity comparison system! **No AI, no neural networks, no machine learning** — just pure mathematics and algorithms.
+**NoAIMatch** is a **100% pure hard-coded image similarity comparison system! **No AI, no neural networks, no machine learning** — just pure mathematics and algorithms.
+
+&gt; **Zero-shot learning, works with any image out of the box!
 
 ### 🧠 Algorithm Overview
 
@@ -91,9 +99,11 @@ MIT License - Use it for anything!
 &lt;a name="chinese"&gt;&lt;/a&gt;
 ## 🇨🇳 中文
 
-### 🎯 这是什么？
+### 🎯 什么是NoAIMatch？
 
-一个**100%纯硬编码**的图像相似度比对系统！**没有AI、没有神经网络、没有机器学习** —— 只靠纯粹的数学和算法！
+**NoAIMatch**是一个**100%纯硬编码的图像相似度比对系统！**没有AI、没有神经网络、没有机器学习** —— 只靠纯粹的数学和算法！
+
+&gt; **零样本识别，开箱即用，适用于任何图像！
 
 ### 🧠 算法原理
 

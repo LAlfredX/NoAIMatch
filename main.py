@@ -8,7 +8,7 @@ from image_processor import compare_images, get_similarity_label
 # Language translations
 TRANSLATIONS = {
     'en': {
-        'title': 'Pure Hard-Coded Image Similarity Comparison',
+        'title': 'NoAIMatch - Pure Hard-Coded Image Similarity Comparison',
         'select_lang': 'Please select your language:',
         'lang_options': '1. English\n2. 中文',
         'menu_title': 'Menu',
@@ -54,7 +54,7 @@ TRANSLATIONS = {
         'saved_to': 'Results saved to: '
     },
     'zh': {
-        'title': '纯硬编码图像相似度比对系统',
+        'title': 'NoAIMatch - 纯硬编码图像相似度比对系统',
         'select_lang': '请选择你的语言：',
         'lang_options': '1. English\n2. 中文',
         'menu_title': '菜单',
