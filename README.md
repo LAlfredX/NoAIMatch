@@ -9,7 +9,7 @@
 
 ---
 
-<a name="english"></a>
+&lt;a name="english"&gt;&lt;/a&gt;
 
 ## English
 
@@ -23,11 +23,13 @@ Zero-shot learning, works with any image out of the box!
 
 This system combines 5 different techniques for robust image comparison:
 
-1. Histogram Similarity - Compares pixel intensity distributions
-2. Feature Comparison - Compares statistical features and gradient features  
-3. SSIM - Measures structural similarity with rotation alignment
-4. NCC - Template matching with rotation alignment
-5. Weighted Fusion - Intelligently combines all 4 methods
+| Factor | Weight | Description |
+|--------|--------|-------------|
+| **Histogram Similarity** | 25% | Compares pixel intensity distributions |
+| **Feature Comparison** | 20% | Compares statistical features and gradient features |
+| **SSIM (Structural Similarity)** | 25% | Measures structural similarity with rotation alignment |
+| **NCC (Normalized Cross-Correlation)** | 15% | Template matching with rotation alignment |
+| **Rotated NCC** | 15% | Best NCC score after trying multiple rotations |
 
 ### Features
 
@@ -43,21 +45,18 @@ This system combines 5 different techniques for robust image comparison:
 
 #### Similar Images (High Similarity)
 
-| Image 1 | Image 2 | Similarity |
-|---------|---------|------------|
-| Original | Scaled 0.75x | 98.9% |
-| Original | Rotated 90° | 94.4% |
-| Original | Rotated 180° | 92.6% |
-| Original | Cropped (Partial) | 68.2% |
+| Image 1 | Image 2 | Similarity | Histogram | Features | SSIM | NCC | Rotated NCC |
+|---------|---------|------------|-----------|----------|------|-----|-------------|
+| Yellow Bubble 00 | Yellow Bubble 01 | 86.0% | 99.9% | 100.0% | 84.9% | 65.0% | 67.2% |
+| Yellow Bubble 01 | Yellow Bubble 02 | 87.4% | 97.7% | 99.3% | 83.9% | 72.7% | 75.1% |
+| Yellow Bubble 02 | Yellow Bubble 03 | 88.6% | 100.0% | 99.8% | 86.7% | 73.3% | 73.3% |
 
 #### Different Images (Low Similarity)
 
-| Image 1 | Image 2 | Similarity |
-|---------|---------|------------|
-| Cat | Dog | 23.5% |
-| Car | Tree | 18.2% |
-| Apple | Banana | 15.8% |
-| Tiger | Bird | 12.4% |
+| Image 1 | Image 2 | Similarity | Histogram | Features | SSIM | NCC | Rotated NCC |
+|---------|---------|------------|-----------|----------|------|-----|-------------|
+| Yellow Bubble | Blue Bubble | 40.2% | 0.0% | 45.8% | 70.6% | 38.6% | 38.6% |
+| Yellow Bubble | Blue Bubble | 41.7% | 0.0% | 58.6% | 71.8% | 40.1% | 40.1% |
 
 ### Quick Start
 
@@ -73,7 +72,7 @@ python main.py
 
 # Or use command line
 python main.py -l
-python main.py -t small_test
+python main.py -t yellow_with_blue
 ```
 
 ### Project Structure
@@ -85,7 +84,11 @@ FrechetDistance/
 ├── requirements.txt
 └── test_images/
     ├── small_test/
-    └── transform_test/
+    ├── transform_test/
+    ├── yellow_with_blue/
+    ├── blue_with_yellow/
+    ├── green_with_red/
+    └── red_with_green/
 ```
 
 ### License
@@ -94,7 +97,7 @@ MIT License
 
 ---
 
-<a name="chinese"></a>
+&lt;a name="chinese"&gt;&lt;/a&gt;
 
 ## 中文
 
@@ -108,11 +111,13 @@ NoAIMatch 是一个 100% 纯硬编码的图像相似度比对系统！没有 AI�
 
 这个系统结合了 5 种技术进行鲁棒的图像比对：
 
-1. 直方图相似度 - 比较像素强度分布
-2. 特征比较 - 比较统计特征和梯度特征
-3. SSIM - 带有旋转对齐的结构相似性测量
-4. NCC - 带有旋转对齐的模板匹配
-5. 加权融合 - 智能融合以上 4 种方法
+| 因素 | 权重 | 说明 |
+|------|------|------|
+| **直方图相似度** | 25% | 比较像素强度分布 |
+| **特征比较** | 20% | 比较统计特征和梯度特征 |
+| **SSIM (结构相似性)** | 25% | 带有旋转对齐的结构相似性测量 |
+| **NCC (归一化互相关)** | 15% | 带有旋转对齐的模板匹配 |
+| **旋转对齐 NCC** | 15% | 尝试多个旋转后的最佳 NCC 分数 |
 
 ### 特性
 
@@ -128,21 +133,18 @@ NoAIMatch 是一个 100% 纯硬编码的图像相似度比对系统！没有 AI�
 
 #### 相似图片（高相似度）
 
-| 图片1 | 图片2 | 相似度 |
-|-------|-------|--------|
-| 原图 | 缩放 0.75 倍 | 98.9% |
-| 原图 | 旋转 90° | 94.4% |
-| 原图 | 旋转 180° | 92.6% |
-| 原图 | 裁剪（局部） | 68.2% |
+| 图片1 | 图片2 | 相似度 | 直方图 | 特征 | SSIM | NCC | 旋转NCC |
+|-------|-------|--------|--------|------|------|-----|---------|
+| 黄色泡泡00 | 黄色泡泡01 | 86.0% | 99.9% | 100.0% | 84.9% | 65.0% | 67.2% |
+| 黄色泡泡01 | 黄色泡泡02 | 87.4% | 97.7% | 99.3% | 83.9% | 72.7% | 75.1% |
+| 黄色泡泡02 | 黄色泡泡03 | 88.6% | 100.0% | 99.8% | 86.7% | 73.3% | 73.3% |
 
 #### 不同图片（低相似度）
 
-| 图片1 | 图片2 | 相似度 |
-|-------|-------|--------|
-| 猫 | 狗 | 23.5% |
-| 汽车 | 树 | 18.2% |
-| 苹果 | 香蕉 | 15.8% |
-| 老虎 | 鸟 | 12.4% |
+| 图片1 | 图片2 | 相似度 | 直方图 | 特征 | SSIM | NCC | 旋转NCC |
+|-------|-------|--------|--------|------|------|-----|---------|
+| 黄色泡泡 | 蓝色泡泡 | 40.2% | 0.0% | 45.8% | 70.6% | 38.6% | 38.6% |
+| 黄色泡泡 | 蓝色泡泡 | 41.7% | 0.0% | 58.6% | 71.8% | 40.1% | 40.1% |
 
 ### 快速开始
 
@@ -158,7 +160,7 @@ python main.py
 
 # 或使用命令行
 python main.py -l
-python main.py -t small_test
+python main.py -t yellow_with_blue
 ```
 
 ### 项目结构
@@ -170,7 +172,11 @@ FrechetDistance/
 ├── requirements.txt
 └── test_images/
     ├── small_test/
-    └── transform_test/
+    ├── transform_test/
+    ├── yellow_with_blue/
+    ├── blue_with_yellow/
+    ├── green_with_red/
+    └── red_with_green/
 ```
 
 ### 许可证
@@ -181,3 +187,4 @@ MIT License
 
 If you find this useful, give it a star!
 如果觉得有用，给个星星支持一下！
+

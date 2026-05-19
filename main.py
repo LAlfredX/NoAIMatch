@@ -1,3 +1,4 @@
+
 import os
 import sys
 import argparse
@@ -51,7 +52,8 @@ TRANSLATIONS = {
         'max_sim': 'Highest Similarity: ',
         'min_sim': 'Lowest Similarity: ',
         'complete': 'Comparison Complete!',
-        'saved_to': 'Results saved to: '
+        'saved_to': 'Results saved to: ',
+        'factor_breakdown': 'Factor Breakdown'
     },
     'zh': {
         'title': 'NoAIMatch - 纯硬编码图像相似度比对系统',
@@ -97,7 +99,8 @@ TRANSLATIONS = {
         'max_sim': '最高相似度：',
         'min_sim': '最低相似度：',
         'complete': '比较完成！',
-        'saved_to': '结果已保存到：'
+        'saved_to': '结果已保存到：',
+        'factor_breakdown': '因素分解'
     }
 }
 
@@ -258,21 +261,21 @@ def run_comparison(test_set_name, log_to_file=True):
         if os.path.exists(log_file):
             os.remove(log_file)
     
-    print("\n" + "=" * 80)
+    print("\n" + "=" * 120)
     print(f"📊 {T['title']} - {T['comparison_title']}")
-    print("=" * 80)
+    print("=" * 120)
     print(f"🎯 {T['test_set']}: {test_set_name}")
     print(f"📝 {T['image_count']}: {len(image_files)}")
     print(f"🔢 {T['comparison_count']}: {len(list(combinations(image_files, 2)))}")
-    print("=" * 80)
+    print("=" * 120)
     
     if log_file:
-        log_message(log_file, "=" * 80, also_print=False)
+        log_message(log_file, "=" * 120, also_print=False)
         log_message(log_file, f"{T['title']} - {T['comparison_title']}", also_print=False)
-        log_message(log_file, "=" * 80, also_print=False)
+        log_message(log_file, "=" * 120, also_print=False)
         log_message(log_file, f"{T['test_set']}: {test_set_name}", also_print=False)
         log_message(log_file, f"{T['image_count']}: {len(image_files)}", also_print=False)
-        log_message(log_file, "=" * 80, also_print=False)
+        log_message(log_file, "=" * 120, also_print=False)
         log_message(log_file, "", also_print=False)
     
     print(f"\n📝 {T['image_list']}:")
@@ -280,16 +283,6 @@ def run_comparison(test_set_name, log_to_file=True):
         print(f"  {i}. {img}")
         if log_file:
             log_message(log_file, f"Image {i}: {img}", also_print=False)
-    
-    print("\n" + "-" * 80)
-    print(f"{T['img1']:<25} {T['img2']:<25} {T['similarity']:<12} {T['rating']:<15}")
-    print("-" * 80)
-    
-    if log_file:
-        log_message(log_file, "", also_print=False)
-        log_message(log_file, "-" * 80, also_print=False)
-        log_message(log_file, f"{T['img1']:<25} {T['img2']:<25} {T['similarity']:<12} {T['rating']:<15}", also_print=False)
-        log_message(log_file, "-" * 80, also_print=False)
     
     results = []
     for img1_name, img2_name in combinations(image_files, 2):
@@ -301,32 +294,54 @@ def run_comparison(test_set_name, log_to_file=True):
             similarity = result['similarity']
             label = get_similarity_label_translated(similarity, T['_lang'])
             
-            similarity_percent = similarity * 100
-            result_line = f"{img1_name:<25} {img2_name:<25} {similarity_percent:>6.1f}%    {label}"
-            print(result_line)
+            factor_scores = result.get('factor_scores', {})
+            
+            # Print comparison with factor scores
+            print("\n" + "-" * 120)
+            print(f"{T['img1']}: {img1_name}")
+            print(f"{T['img2']}: {img2_name}")
+            print("-" * 120)
+            print(f"  {T['similarity']}: {similarity * 100:>6.1f}% ({label})")
+            print(f"\n  {T['factor_breakdown']}:")
+            
+            for factor_name, factor_score in factor_scores.items():
+                print(f"    {factor_name:<45}: {factor_score * 100:>6.1f}%")
             
             if log_file:
-                log_message(log_file, result_line, also_print=False)
+                log_message(log_file, "-" * 120, also_print=False)
+                log_message(log_file, f"{T['img1']}: {img1_name}", also_print=False)
+                log_message(log_file, f"{T['img2']}: {img2_name}", also_print=False)
+                log_message(log_file, "-" * 120, also_print=False)
+                log_message(log_file, f"  {T['similarity']}: {similarity * 100:>6.1f}% ({label})", also_print=False)
+                log_message(log_file, f"\n  {T['factor_breakdown']}:", also_print=False)
+                for factor_name, factor_score in factor_scores.items():
+                    log_message(log_file, f"    {factor_name:<45}: {factor_score * 100:>6.1f}%", also_print=False)
             
             results.append({
                 'img1': img1_name,
                 'img2': img2_name,
                 'similarity': similarity,
-                'label': label
+                'label': label,
+                'factor_scores': factor_scores
             })
             
         except Exception as e:
             error_text = "Error" if T['_lang'] == 'en' else "错误"
-            error_line = f"{img1_name:<25} {img2_name:<25} {error_text:<12} {str(e)[:10]:<15}"
-            print(error_line)
+            print("\n" + "-" * 120)
+            print(f"{T['img1']}: {img1_name}")
+            print(f"{T['img2']}: {img2_name}")
+            print(f"  {error_text}: {str(e)}")
             if log_file:
-                log_message(log_file, error_line, also_print=False)
+                log_message(log_file, "-" * 120, also_print=False)
+                log_message(log_file, f"{T['img1']}: {img1_name}", also_print=False)
+                log_message(log_file, f"{T['img2']}: {img2_name}", also_print=False)
+                log_message(log_file, f"  {error_text}: {str(e)}", also_print=False)
     
-    print("-" * 80)
+    print("\n" + "-" * 120)
     
     if log_file:
-        log_message(log_file, "-" * 80, also_print=False)
         log_message(log_file, "", also_print=False)
+        log_message(log_file, "-" * 120, also_print=False)
         
         log_message(log_file, f"\n📈 {T['stats_title']}:", also_print=False)
         avg_similarity = sum(r['similarity'] for r in results) / len(results) if results else 0
@@ -340,13 +355,13 @@ def run_comparison(test_set_name, log_to_file=True):
             log_message(log_file, f"{T['min_sim']}{min_sim['similarity'] * 100:.1f}% ({min_sim['img1']} vs {min_sim['img2']})", also_print=False)
         
         log_message(log_file, "", also_print=False)
-        log_message(log_file, "=" * 80, also_print=False)
+        log_message(log_file, "=" * 120, also_print=False)
         log_message(log_file, f"{T['complete']}", also_print=False)
-        log_message(log_file, "=" * 80, also_print=False)
+        log_message(log_file, "=" * 120, also_print=False)
         
         print(f"\n✅ {T['saved_to']}{log_file}")
     
-    print("=" * 80)
+    print("=" * 120)
     return True
 
 def interactive_menu():
@@ -490,3 +505,4 @@ Usage examples:
 
 if __name__ == "__main__":
     main()
+

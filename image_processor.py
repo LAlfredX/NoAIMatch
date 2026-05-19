@@ -233,22 +233,34 @@ def compare_images(image_path1, image_path2, return_intermediate=False):
     img2 = normalize_pixel_values(img2)
     
     scores = []
+    factor_names = [
+        'Histogram Similarity',
+        'Feature Comparison',
+        'SSIM (Structural Similarity)',
+        'NCC (Normalized Cross-Correlation)',
+        'Rotated NCC'
+    ]
+    factor_scores = {}
     
     try:
         hist1 = calculate_histogram(img1, bins=32)
         hist2 = calculate_histogram(img2, bins=32)
         hist_sim = histogram_intersection(hist1, hist2)
         scores.append(hist_sim)
+        factor_scores['Histogram Similarity'] = float(hist_sim)
     except:
         scores.append(0.5)
+        factor_scores['Histogram Similarity'] = 0.5
     
     try:
         feat1 = extract_features(img1)
         feat2 = extract_features(img2)
         feat_sim = compare_features(feat1, feat2)
         scores.append(feat_sim)
+        factor_scores['Feature Comparison'] = float(feat_sim)
     except:
         scores.append(0.5)
+        factor_scores['Feature Comparison'] = 0.5
     
     best_angle = 0
     try:
@@ -256,14 +268,18 @@ def compare_images(image_path1, image_path2, return_intermediate=False):
         original_ssim = calculate_ssim(img1, img2)
         best_ssim = max(original_ssim, rotated_ssim)
         scores.append(best_ssim)
+        factor_scores['SSIM (Structural Similarity)'] = float(best_ssim)
     except:
         scores.append(0.5)
+        factor_scores['SSIM (Structural Similarity)'] = 0.5
     
     try:
         ncc = calculate_ncc(img1, img2)
         scores.append(ncc)
+        factor_scores['NCC (Normalized Cross-Correlation)'] = float(ncc)
     except:
         scores.append(0.5)
+        factor_scores['NCC (Normalized Cross-Correlation)'] = 0.5
     
     try:
         if img2.ndim == 3:
@@ -276,9 +292,12 @@ def compare_images(image_path1, image_path2, return_intermediate=False):
         else:
             img1_gray = img1
         rotated_ncc = calculate_ncc(img1_gray, rotated)
-        scores.append(max(ncc, rotated_ncc))
+        best_rotated_ncc = max(ncc, rotated_ncc)
+        scores.append(best_rotated_ncc)
+        factor_scores['Rotated NCC'] = float(best_rotated_ncc)
     except:
         scores.append(0.5)
+        factor_scores['Rotated NCC'] = 0.5
     
     weights = [0.25, 0.20, 0.25, 0.15, 0.15]
     final_similarity = np.average(scores, weights=weights)
@@ -286,7 +305,9 @@ def compare_images(image_path1, image_path2, return_intermediate=False):
     
     result = {
         'similarity': float(final_similarity),
-        'optimal_scale_level': 0
+        'optimal_scale_level': 0,
+        'factor_scores': factor_scores,
+        'weights': {name: weight for name, weight in zip(factor_names, weights)}
     }
     
     if return_intermediate:
