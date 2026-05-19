@@ -3,6 +3,9 @@
 
 100% pure hard-coded image similarity comparison — No AI, No ML, Just Math!
 
+[![English README](https://img.shields.io/badge/README-English-blue)](./README_EN.md)
+[![中文 README](https://img.shields.io/badge/README-中文-red)](./README_ZH.md)
+
 ---
 
 ## English
