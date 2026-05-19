@@ -1,21 +1,21 @@
 
 # NoAIMatch
 
-&lt;p align="center"&gt;
-  &lt;img src="https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/docs/demo_banner.png" alt="NoAIMatch Banner" width="600"/&gt;
-&lt;/p&gt;
+<p align="center">
+  <img src="https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/docs/demo_banner.png" alt="NoAIMatch Banner" width="600"/>
+</p>
 
 **100% pure hard-coded image similarity comparison** - No AI, No ML, Just Math!
 
 ---
 
-&lt;p align="center"&gt;
-  &lt;a href="#english"&gt;English&lt;/a&gt; | &lt;a href="#chinese"&gt;中文&lt;/a&gt;
-&lt;/p&gt;
+<p align="center">
+  <a href="#english">English</a> | <a href="#chinese">中文</a>
+</p>
 
 ---
 
-&lt;a name="english"&gt;&lt;/a&gt;
+<a name="english"></a>
 
 ## English
 
@@ -122,7 +122,7 @@ MIT License
 
 ---
 
-&lt;a name="chinese"&gt;&lt;/a&gt;
+<a name="chinese"></a>
 
 ## 中文
 
