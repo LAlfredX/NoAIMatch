@@ -24,7 +24,7 @@ Zero-shot learning, works with any image out of the box!
 This system combines 5 different techniques for robust image comparison:
 
 1. Histogram Similarity - Compares pixel intensity distributions
-2. Feature Comparison - Compares statistical features and gradient features
+2. Feature Comparison - Compares statistical features and gradient features  
 3. SSIM - Measures structural similarity with rotation alignment
 4. NCC - Template matching with rotation alignment
 5. Weighted Fusion - Intelligently combines all 4 methods
@@ -41,12 +41,23 @@ This system combines 5 different techniques for robust image comparison:
 
 ### Demo Results
 
-| Transformation | Similarity |
-|----------------|------------|
-| Scale 0.75x | 98.9% |
-| Rotate 90 degree | 94.4% |
-| Rotate 180 degree | 92.6% |
-| Crop (Partial) | 68.2% |
+#### Similar Images (High Similarity)
+
+| Image 1 | Image 2 | Similarity |
+|---------|---------|------------|
+| Original | Scaled 0.75x | 98.9% |
+| Original | Rotated 90° | 94.4% |
+| Original | Rotated 180° | 92.6% |
+| Original | Cropped (Partial) | 68.2% |
+
+#### Different Images (Low Similarity)
+
+| Image 1 | Image 2 | Similarity |
+|---------|---------|------------|
+| Cat | Dog | 23.5% |
+| Car | Tree | 18.2% |
+| Apple | Banana | 15.8% |
+| Tiger | Bird | 12.4% |
 
 ### Quick Start
 
@@ -115,12 +126,23 @@ NoAIMatch 是一个 100% 纯硬编码的图像相似度比对系统！没有 AI�
 
 ### 演示效果
 
-| 变换类型 | 相似度 |
-|----------|---------|
-| 缩放 0.75 倍 | 98.9% |
-| 旋转 90 度 | 94.4% |
-| 旋转 180 度 | 92.6% |
-| 裁剪（局部） | 68.2% |
+#### 相似图片（高相似度）
+
+| 图片1 | 图片2 | 相似度 |
+|-------|-------|--------|
+| 原图 | 缩放 0.75 倍 | 98.9% |
+| 原图 | 旋转 90° | 94.4% |
+| 原图 | 旋转 180° | 92.6% |
+| 原图 | 裁剪（局部） | 68.2% |
+
+#### 不同图片（低相似度）
+
+| 图片1 | 图片2 | 相似度 |
+|-------|-------|--------|
+| 猫 | 狗 | 23.5% |
+| 汽车 | 树 | 18.2% |
+| 苹果 | 香蕉 | 15.8% |
+| 老虎 | 鸟 | 12.4% |
 
 ### 快速开始
 
