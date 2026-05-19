@@ -5,6 +5,12 @@
 
 ---
 
+**[English](#english)** | **[中文](#chinese)**
+
+---
+
+&lt;a name="english"&gt;&lt;/a&gt;
+
 ## English
 
 ### What is NoAIMatch?
@@ -35,12 +41,12 @@ This system combines 5 different techniques for robust image comparison:
 
 ### Demo Results
 
-| Transformation | Similarity |
-|----------------|------------|
-| Scale 0.75x | 98.9% |
-| Rotate 90° | 94.4% |
-| Rotate 180° | 92.6% |
-| Crop (Partial) | 68.2% |
+| Transformation | Image 1 | Image 2 | Similarity |
+|----------------|---------|---------|------------|
+| Scale 0.75x | ![Original](test_images/small_test/original.png) | ![Scaled](test_images/small_test/scale_0.75.png) | 98.9% |
+| Rotate 90° | ![Original](test_images/small_test/original.png) | ![Rotated](test_images/small_test/rotate_090.png) | 94.4% |
+| Rotate 180° | ![Original](test_images/small_test/original.png) | ![Rotated](test_images/small_test/rotate_180.png) | 92.6% |
+| Crop (Partial) | ![Original](test_images/small_test/original.png) | ![Cropped](test_images/small_test/crop_01.png) | 68.2% |
 
 ### Quick Start
 
@@ -77,6 +83,8 @@ MIT License - Use it for anything!
 
 ---
 
+&lt;a name="chinese"&gt;&lt;/a&gt;
+
 ## 中文
 
 ### 什么是NoAIMatch？
@@ -107,12 +115,12 @@ NoAIMatch是一个100%纯硬编码的图像相似度比对系统！没有AI、�
 
 ### 演示效果
 
-| 变换类型 | 相似度 |
-|----------|---------|
-| 缩放0.75倍 | 98.9% |
-| 旋转90度 | 94.4% |
-| 旋转180度 | 92.6% |
-| 裁剪（局部） | 68.2% |
+| 变换类型 | 图片1 | 图片2 | 相似度 |
+|----------|--------|--------|---------|
+| 缩放0.75倍 | ![原图](test_images/small_test/original.png) | ![缩放](test_images/small_test/scale_0.75.png) | 98.9% |
+| 旋转90度 | ![原图](test_images/small_test/original.png) | ![旋转](test_images/small_test/rotate_090.png) | 94.4% |
+| 旋转180度 | ![原图](test_images/small_test/original.png) | ![旋转](test_images/small_test/rotate_180.png) | 92.6% |
+| 裁剪（局部） | ![原图](test_images/small_test/original.png) | ![裁剪](test_images/small_test/crop_01.png) | 68.2% |
 
 ### 快速开始
 
