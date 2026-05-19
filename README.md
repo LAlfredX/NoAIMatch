@@ -1,27 +1,55 @@
 
 # NoAIMatch
 
-100% pure hard-coded image similarity comparison - No AI, No ML, Just Math!
+<p align="center">
+  <img src="https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/docs/demo_banner.png" alt="NoAIMatch Banner" width="600"/>
+</p>
+
+**100% pure hard-coded image similarity comparison** - No AI, No ML, Just Math!
 
 ---
 
-[English](#english) | [中文](#chinese)
+<p align="center">
+  <a href="#english">English</a> | <a href="#chinese">中文</a>
+</p>
 
 ---
 
-&lt;a name="english"&gt;&lt;/a&gt;
+## 🌟 Features
 
-## English
+- **Pure Hard-Coded** - No AI/ML dependencies
+- **Zero-Shot Learning** - Works with any image out of the box
+- **Scale Invariant** - Handle different zoom levels (0.5x to 2x)
+- **Rotation Invariant** - Support 0-360 degree rotation
+- **Brightness Tolerant** - Works with different lighting conditions
+- **Noise Robust** - Handles image noise
+- **Cropping Robust** - Compare partial to full images
 
-### What is NoAIMatch?
+---
 
-NoAIMatch is a 100% pure hard-coded image similarity comparison system! No AI, no neural networks, no machine learning - just pure mathematics and algorithms.
+## 📊 Demo Results
 
-Zero-shot learning, works with any image out of the box!
+### Similar Images (High Similarity)
 
-### Algorithm Overview
+Original Image | Transformed Image | Similarity Score | Description
+--- | --- | --- | ---
+![Original](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/original.png) | ![Scaled 0.75x](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/scale_0.75.png) | **98.9%** | Scale 0.75x
+![Original](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/original.png) | ![Rotated 90°](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/rotate_090.png) | **94.4%** | Rotate 90°
+![Original](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/original.png) | ![Rotated 180°](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/rotate_180.png) | **92.6%** | Rotate 180°
+![Original](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/original.png) | ![Cropped](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/crop_01.png) | **68.2%** | Partial Crop
 
-This system combines 5 different techniques for robust image comparison:
+### Different Images (Low Similarity)
+
+Image 1 | Image 2 | Similarity Score | Description
+--- | --- | --- | ---
+![Yellow Bubble](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/yellow_with_blue/yellow_bubble_00.png) | ![Blue Bubble](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/yellow_with_blue/blue_bubble_intruder.png) | **40.2%** | Different Colors
+![Green Bubble](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/green_with_red/green_bubble_00.png) | ![Red Bubble](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/green_with_red/red_bubble_intruder.png) | **45.6%** | Different Colors
+
+---
+
+## 🧠 Algorithm Overview
+
+This system combines **5 different techniques** for robust image comparison:
 
 | Factor | Weight | Description |
 |--------|--------|-------------|
@@ -31,61 +59,80 @@ This system combines 5 different techniques for robust image comparison:
 | **NCC (Normalized Cross-Correlation)** | 15% | Template matching with rotation alignment |
 | **Rotated NCC** | 15% | Best NCC score after trying multiple rotations |
 
-### Features
+### Factor Breakdown Analysis
 
-- Pure Hard-Coded - No AI/ML dependencies
-- Zero-Shot Learning - Works with any image
-- Scale Invariant - Handle different zoom levels
-- Rotation Invariant - Support 0-360 degree rotation
-- Brightness Tolerant - Works with different lighting
-- Noise Robust - Handles image noise
-- Cropping Robust - Compare partial to full images
+#### Similar Images (Yellow Bubbles)
 
-### Demo Results
+| Image Pair | Similarity | Histogram | Features | SSIM | NCC | Rotated NCC |
+|------------|------------|-----------|----------|------|-----|-------------|
+| Yellow 00 vs Yellow 01 | 86.0% | 99.9% | 100.0% | 84.9% | 65.0% | 67.2% |
+| Yellow 01 vs Yellow 02 | 87.4% | 97.7% | 99.3% | 83.9% | 72.7% | 75.1% |
+| Yellow 02 vs Yellow 03 | 88.6% | 100.0% | 99.8% | 86.7% | 73.3% | 73.3% |
 
-#### Similar Images (High Similarity)
+#### Different Images (Yellow vs Blue)
 
-| Image 1 | Image 2 | Similarity | Histogram | Features | SSIM | NCC | Rotated NCC |
-|---------|---------|------------|-----------|----------|------|-----|-------------|
-| Yellow Bubble 00 | Yellow Bubble 01 | 86.0% | 99.9% | 100.0% | 84.9% | 65.0% | 67.2% |
-| Yellow Bubble 01 | Yellow Bubble 02 | 87.4% | 97.7% | 99.3% | 83.9% | 72.7% | 75.1% |
-| Yellow Bubble 02 | Yellow Bubble 03 | 88.6% | 100.0% | 99.8% | 86.7% | 73.3% | 73.3% |
+| Image Pair | Similarity | Histogram | Features | SSIM | NCC | Rotated NCC |
+|------------|------------|-----------|----------|------|-----|-------------|
+| Yellow vs Blue | 40.2% | 0.0% | 45.8% | 70.6% | 38.6% | 38.6% |
+| Yellow vs Blue | 41.7% | 0.0% | 58.6% | 71.8% | 40.1% | 40.1% |
 
-#### Different Images (Low Similarity)
+---
 
-| Image 1 | Image 2 | Similarity | Histogram | Features | SSIM | NCC | Rotated NCC |
-|---------|---------|------------|-----------|----------|------|-----|-------------|
-| Yellow Bubble | Blue Bubble | 40.2% | 0.0% | 45.8% | 70.6% | 38.6% | 38.6% |
-| Yellow Bubble | Blue Bubble | 41.7% | 0.0% | 58.6% | 71.8% | 40.1% | 40.1% |
+<a name="english"></a>
+
+## English
+
+### What is NoAIMatch?
+
+NoAIMatch is a **100% pure hard-coded image similarity comparison system**! No AI, no neural networks, no machine learning - just pure mathematics and algorithms.
+
+Zero-shot learning, works with any image out of the box!
 
 ### Quick Start
 
 ```bash
-# Clone or download this project
-cd FrechetDistance
+# Clone this repository
+git clone https://github.com/LAlfredX/NoAIMatch.git
+cd NoAIMatch
 
 # Install dependencies
 pip install -r requirements.txt
 
-# Interactive mode
+# Run in interactive mode
 python main.py
 
-# Or use command line
+# Run specific test set
+python main.py -t small_test
+```
+
+### Command Line Usage
+
+```bash
+# List available test sets
 python main.py -l
+
+# Run comparison on specific test set
 python main.py -t yellow_with_blue
+
+# Create new test set
+python main.py -c my_new_set
+
+# Run without saving log file
+python main.py -t small_test -n
 ```
 
 ### Project Structure
 
 ```
-FrechetDistance/
-├── main.py
-├── image_processor.py
-├── requirements.txt
-└── test_images/
-    ├── small_test/
-    ├── transform_test/
-    ├── yellow_with_blue/
+NoAIMatch/
+├── main.py              # Main entry point (CLI + Interactive)
+├── image_processor.py   # Core algorithm implementation
+├── requirements.txt     # Dependencies
+├── README.md            # Documentation
+└── test_images/         # Test image datasets
+    ├── small_test/      # Basic transformation tests
+    ├── transform_test/  # Comprehensive transformation tests
+    ├── yellow_with_blue/# Color-based similarity tests
     ├── blue_with_yellow/
     ├── green_with_red/
     └── red_with_green/
@@ -97,83 +144,61 @@ MIT License
 
 ---
 
-&lt;a name="chinese"&gt;&lt;/a&gt;
+<a name="chinese"></a>
 
 ## 中文
 
 ### 什么是 NoAIMatch？
 
-NoAIMatch 是一个 100% 纯硬编码的图像相似度比对系统！没有 AI、没有神经网络、没有机器学习 - 只靠纯粹的数学和算法！
+NoAIMatch 是一个 **100% 纯硬编码的图像相似度比对系统**！没有 AI、没有神经网络、没有机器学习 - 只靠纯粹的数学和算法！
 
 零样本识别，开箱即用，适用于任何图像！
-
-### 算法原理
-
-这个系统结合了 5 种技术进行鲁棒的图像比对：
-
-| 因素 | 权重 | 说明 |
-|------|------|------|
-| **直方图相似度** | 25% | 比较像素强度分布 |
-| **特征比较** | 20% | 比较统计特征和梯度特征 |
-| **SSIM (结构相似性)** | 25% | 带有旋转对齐的结构相似性测量 |
-| **NCC (归一化互相关)** | 15% | 带有旋转对齐的模板匹配 |
-| **旋转对齐 NCC** | 15% | 尝试多个旋转后的最佳 NCC 分数 |
-
-### 特性
-
-- 纯硬编码 - 无 AI/ML 依赖
-- 零样本识别 - 适用于任何图像
-- 缩放不变性 - 处理不同放大倍数
-- 旋转不变性 - 支持 0-360 度旋转
-- 亮度容忍 - 适应不同光照条件
-- 噪声鲁棒 - 处理图像噪声
-- 裁剪鲁棒 - 比较局部和完整图像
-
-### 演示效果
-
-#### 相似图片（高相似度）
-
-| 图片1 | 图片2 | 相似度 | 直方图 | 特征 | SSIM | NCC | 旋转NCC |
-|-------|-------|--------|--------|------|------|-----|---------|
-| 黄色泡泡00 | 黄色泡泡01 | 86.0% | 99.9% | 100.0% | 84.9% | 65.0% | 67.2% |
-| 黄色泡泡01 | 黄色泡泡02 | 87.4% | 97.7% | 99.3% | 83.9% | 72.7% | 75.1% |
-| 黄色泡泡02 | 黄色泡泡03 | 88.6% | 100.0% | 99.8% | 86.7% | 73.3% | 73.3% |
-
-#### 不同图片（低相似度）
-
-| 图片1 | 图片2 | 相似度 | 直方图 | 特征 | SSIM | NCC | 旋转NCC |
-|-------|-------|--------|--------|------|------|-----|---------|
-| 黄色泡泡 | 蓝色泡泡 | 40.2% | 0.0% | 45.8% | 70.6% | 38.6% | 38.6% |
-| 黄色泡泡 | 蓝色泡泡 | 41.7% | 0.0% | 58.6% | 71.8% | 40.1% | 40.1% |
 
 ### 快速开始
 
 ```bash
-# 克隆或下载项目
-cd FrechetDistance
+# 克隆仓库
+git clone https://github.com/LAlfredX/NoAIMatch.git
+cd NoAIMatch
 
 # 安装依赖
 pip install -r requirements.txt
 
-# 交互模式
+# 运行交互模式
 python main.py
 
-# 或使用命令行
+# 运行指定测试集
+python main.py -t small_test
+```
+
+### 命令行用法
+
+```bash
+# 列出可用测试集
 python main.py -l
+
+# 在指定测试集上运行比较
 python main.py -t yellow_with_blue
+
+# 创建新测试集
+python main.py -c my_new_set
+
+# 运行不保存日志
+python main.py -t small_test -n
 ```
 
 ### 项目结构
 
 ```
-FrechetDistance/
-├── main.py
-├── image_processor.py
-├── requirements.txt
-└── test_images/
-    ├── small_test/
-    ├── transform_test/
-    ├── yellow_with_blue/
+NoAIMatch/
+├── main.py              # 主入口（命令行 + 交互模式）
+├── image_processor.py   # 核心算法实现
+├── requirements.txt     # 依赖库
+├── README.md            # 文档
+└── test_images/         # 测试图片数据集
+    ├── small_test/      # 基础变换测试
+    ├── transform_test/  # 综合变换测试
+    ├── yellow_with_blue/# 颜色相似度测试
     ├── blue_with_yellow/
     ├── green_with_red/
     └── red_with_green/
@@ -185,6 +210,15 @@ MIT License
 
 ---
 
-If you find this useful, give it a star!
-如果觉得有用，给个星星支持一下！
+## 🤝 Contributing
+
+Contributions are welcome! Please feel free to submit issues and pull requests.
+
+## ⭐ Star History
+
+If you find this project useful, please give it a star! ⭐
+
+---
+
+Made with ❤️ by [LAlfredX](https://github.com/LAlfredX)
 
