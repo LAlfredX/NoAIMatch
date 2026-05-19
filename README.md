@@ -29,7 +29,7 @@
 
 ## 📊 Demo Results
 
-### Similar Images (High Similarity)
+### 1. Same Object (High Similarity)
 
 Original Image | Transformed Image | Similarity Score | Description
 --- | --- | --- | ---
@@ -38,7 +38,14 @@ Original Image | Transformed Image | Similarity Score | Description
 ![Original](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/original.png) | ![Rotated 180°](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/rotate_180.png) | **92.6%** | Rotate 180°
 ![Original](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/original.png) | ![Cropped](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/small_test/crop_01.png) | **68.2%** | Partial Crop
 
-### Different Images (Low Similarity)
+### 2. Same Color Bubbles (High Similarity)
+
+Bubble 1 | Bubble 2 | Similarity Score | Description
+--- | --- | --- | ---
+![Yellow 00](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/yellow_with_blue/yellow_bubble_00.png) | ![Yellow 01](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/yellow_with_blue/yellow_bubble_01.png) | **86.0%** | Same Color, Different Variation
+![Yellow 00](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/yellow_with_blue/yellow_bubble_00.png) | ![Yellow 02](https://raw.githubusercontent.com/LAlfredX/NoAIMatch/main/test_images/yellow_with_blue/yellow_bubble_02.png) | **85.1%** | Same Color, Different Variation
+
+### 3. Different Objects (Low Similarity)
 
 Image 1 | Image 2 | Similarity Score | Description
 --- | --- | --- | ---
@@ -61,20 +68,27 @@ This system combines **5 different techniques** for robust image comparison:
 
 ### Factor Breakdown Analysis
 
-#### Similar Images (Yellow Bubbles)
+#### Same Color Bubbles (Yellow 00 vs Yellow 01)
 
-| Image Pair | Similarity | Histogram | Features | SSIM | NCC | Rotated NCC |
-|------------|------------|-----------|----------|------|-----|-------------|
-| Yellow 00 vs Yellow 01 | 86.0% | 99.9% | 100.0% | 84.9% | 65.0% | 67.2% |
-| Yellow 01 vs Yellow 02 | 87.4% | 97.7% | 99.3% | 83.9% | 72.7% | 75.1% |
-| Yellow 02 vs Yellow 03 | 88.6% | 100.0% | 99.8% | 86.7% | 73.3% | 73.3% |
+| Factor | Score |
+|--------|-------|
+| Similarity | 86.0% |
+| Histogram Similarity | 99.9% |
+| Feature Comparison | 100.0% |
+| SSIM (Structural Similarity) | 84.9% |
+| NCC (Normalized Cross-Correlation) | 65.0% |
+| Rotated NCC | 67.2% |
 
-#### Different Images (Yellow vs Blue)
+#### Different Color Bubbles (Yellow vs Blue)
 
-| Image Pair | Similarity | Histogram | Features | SSIM | NCC | Rotated NCC |
-|------------|------------|-----------|----------|------|-----|-------------|
-| Yellow vs Blue | 40.2% | 0.0% | 45.8% | 70.6% | 38.6% | 38.6% |
-| Yellow vs Blue | 41.7% | 0.0% | 58.6% | 71.8% | 40.1% | 40.1% |
+| Factor | Score |
+|--------|-------|
+| Similarity | 40.2% |
+| Histogram Similarity | 0.0% |
+| Feature Comparison | 45.8% |
+| SSIM (Structural Similarity) | 70.6% |
+| NCC (Normalized Cross-Correlation) | 38.6% |
+| Rotated NCC | 38.6% |
 
 ---
 
@@ -191,7 +205,7 @@ python main.py -t small_test -n
 
 ```
 NoAIMatch/
-├── main.py              # 主入口（命令行 + 交互模式）
+├── main.py              # 主入口（命令行 + 交互模式
 ├── image_processor.py   # 核心算法实现
 ├── requirements.txt     # 依赖库
 ├── README.md            # 文档
@@ -221,4 +235,3 @@ If you find this project useful, please give it a star! ⭐
 ---
 
 Made with ❤️ by [LAlfredX](https://github.com/LAlfredX)
-
