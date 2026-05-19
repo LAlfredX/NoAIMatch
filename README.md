@@ -28,9 +28,9 @@
 
 ### 🎯 What is NoAIMatch?
 
-**NoAIMatch** is a **100% pure hard-coded image similarity comparison system! **No AI, no neural networks, no machine learning** — just pure mathematics and algorithms.
+**NoAIMatch** is a 100% pure hard-coded image similarity comparison system! No AI, no neural networks, no machine learning — just pure mathematics and algorithms.
 
-&gt; **Zero-shot learning, works with any image out of the box!
+&gt; Zero-shot learning, works with any image out of the box!
 
 ### 🧠 Algorithm Overview
 
@@ -57,8 +57,8 @@ This system combines 5 different techniques for robust image comparison:
 | Transformation | Image 1 | Image 2 | Similarity |
 |----------------|---------|---------|------------|
 | Scale 0.75x | ![Original](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![Scaled](https://via.placeholder.com/100x100/10b981/ffffff?text=0.75x) | **98.9%** 🔥 |
-| Rotate 90° | ![Original](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![Rotated](https://via.placeholder.com/100x100/f59e0b/ffffff?text=90°) | **94.4%** 🔥 |
-| Rotate 180° | ![Original](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![Rotated](https://via.placeholder.com/100x100/ef4444/ffffff?text=180°) | **92.6%** 🔥 |
+| Rotate 90° | ![Original](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![Rotated](https://via.placeholder.com/100x100/f59e0b/ffffff?text=90%C2%B0) | **94.4%** 🔥 |
+| Rotate 180° | ![Original](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![Rotated](https://via.placeholder.com/100x100/ef4444/ffffff?text=180%C2%B0) | **92.6%** 🔥 |
 | Crop (Partial) | ![Original](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![Cropped](https://via.placeholder.com/100x100/8b5cf6/ffffff?text=CROP) | **68.2%** ✨ |
 
 ### 🚀 Quick Start
@@ -82,7 +82,7 @@ python main.py -t small_test            # Run comparison
 
 ```
 FrechetDistance/
-├── main.py                    # Main program (CLI & Interactive)
+├── main.py                    # Main program (CLI &amp; Interactive)
 ├── image_processor.py         # Core algorithm (V3 Optimized)
 ├── requirements.txt           # Dependencies
 └── test_images/              # Test image sets
@@ -101,9 +101,9 @@ MIT License - Use it for anything!
 
 ### 🎯 什么是NoAIMatch？
 
-**NoAIMatch**是一个**100%纯硬编码的图像相似度比对系统！**没有AI、没有神经网络、没有机器学习** —— 只靠纯粹的数学和算法！
+**NoAIMatch**是一个100%纯硬编码的图像相似度比对系统！没有AI、没有神经网络、没有机器学习 —— 只靠纯粹的数学和算法！
 
-&gt; **零样本识别，开箱即用，适用于任何图像！
+&gt; 零样本识别，开箱即用，适用于任何图像！
 
 ### 🧠 算法原理
 
@@ -130,8 +130,8 @@ MIT License - Use it for anything!
 | 变换类型 | 图片1 | 图片2 | 相似度 |
 |----------|--------|--------|---------|
 | 缩放0.75倍 | ![原图](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![缩放](https://via.placeholder.com/100x100/10b981/ffffff?text=0.75x) | **98.9%** 🔥 |
-| 旋转90度 | ![原图](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![旋转](https://via.placeholder.com/100x100/f59e0b/ffffff?text=90°) | **94.4%** 🔥 |
-| 旋转180度 | ![原图](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![旋转](https://via.placeholder.com/100x100/ef4444/ffffff?text=180°) | **92.6%** 🔥 |
+| 旋转90度 | ![原图](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![旋转](https://via.placeholder.com/100x100/f59e0b/ffffff?text=90%C2%B0) | **94.4%** 🔥 |
+| 旋转180度 | ![原图](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![旋转](https://via.placeholder.com/100x100/ef4444/ffffff?text=180%C2%B0) | **92.6%** 🔥 |
 | 裁剪（局部） | ![原图](https://via.placeholder.com/100x100/3b82f6/ffffff?text=ORIG) | ![裁剪](https://via.placeholder.com/100x100/8b5cf6/ffffff?text=CROP) | **68.2%** ✨ |
 
 ### 🚀 快速开始
@@ -155,7 +155,7 @@ python main.py -t small_test            # 运行比较
 
 ```
 FrechetDistance/
-├── main.py                    # 主程序（命令行 & 交互式）
+├── main.py                    # 主程序（命令行 &amp; 交互式）
 ├── image_processor.py         # 核心算法（V3优化版）
 ├── requirements.txt           # 依赖库
 └── test_images/              # 测试图片集
